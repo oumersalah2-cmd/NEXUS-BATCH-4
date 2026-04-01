@@ -1,0 +1,15 @@
+from collections import defaultdict
+
+class Solution:
+    def similarPairs(self, words):
+        count = defaultdict(int)
+        
+        for word in words:
+            signature = ''.join(sorted(set(word)))
+            count[signature] += 1
+        
+        result = 0
+        for k in count.values():
+            result += k * (k - 1) // 2
+        
+        return result
