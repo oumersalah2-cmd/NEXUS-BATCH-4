@@ -1,0 +1,22 @@
+from collections import Counter
+
+class Solution:
+    def commonChars(self, words):
+        min_freq = Counter(words[0])
+
+        for word in words[1:]:
+            min_freq &= Counter(word)
+
+        result = []
+        for char, count in min_freq.items():
+            result.extend([char] * count)
+
+        return result
+
+
+# ---- run example ----
+if __name__ == "__main__":
+    sol = Solution()
+    words = ["bella", "label", "roller"]
+    print(sol.commonChars(words))    
+        
