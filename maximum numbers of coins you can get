@@ -1,0 +1,15 @@
+from typing import List
+
+class Solution:
+    def maxCoins(self, piles: List[int]) -> int:
+        piles.sort()
+        n = len(piles)
+        
+        res = 0
+        i = n - 2  # start from second largest
+        
+        for _ in range(n // 3):
+            res += piles[i]
+            i -= 2  # skip Alice's and Bob's picks
+        
+        return res
